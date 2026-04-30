@@ -2395,7 +2395,7 @@ const DEBRIEF_FUNCTIONS = {
 
 const STATUS_COLORS = {
   correct: { color: PALETTE.success, label: 'Optimal', bg: 'rgba(63,185,80,0.10)' },
-  workable: { color: PALETTE.warning, label: 'Workable', bg: 'rgba(210,153,34,0.10)' },
+  workable: { color: PALETTE.warning, label: 'Not optimal', bg: 'rgba(210,153,34,0.10)' },
   incorrect: { color: PALETTE.danger, label: 'Issue', bg: 'rgba(248,81,73,0.10)' },
   unknown: { color: PALETTE.textMuted, label: '—', bg: 'transparent' }
 };
