@@ -1,6 +1,6 @@
-# Virtual qPCR Flow Simulation
+# Cloning Flow Simulation
 
-An interactive educational simulation that guides students through the process of optimising a qPCR experiment, from primer selection through to interpreting results.
+An interactive educational simulation that guides students through the process of designing a cloning experiment.
 
 ## Quick Start (local development)
 
@@ -15,11 +15,11 @@ Then open http://localhost:5173 in your browser.
 
 ### One-time setup
 
-1. **Create a new GitHub repository** (e.g. `qpcr-sim`)
+1. **Create a new GitHub repository** (e.g. `cloning-sim`)
 
 2. **Edit `vite.config.js`** — change `your-repo-name` to your actual repo name:
    ```js
-   base: '/qpcr-sim/',
+   base: '/cloning-sim/',
    ```
 
 3. **Push the code:**
@@ -37,7 +37,7 @@ Then open http://localhost:5173 in your browser.
    - Under **Source**, select **GitHub Actions**
    - That's it — the included workflow will build and deploy automatically
 
-5. Your site will be live at: `https://YOUR-USERNAME.github.io/qpcr-sim/`
+5. Your site will be live at: `https://YOUR-USERNAME.github.io/cloning-sim/`
 
 ### Updating
 
@@ -47,7 +47,7 @@ Any push to `main` automatically rebuilds and redeploys. Just edit, commit, and 
 
 ```html
 <iframe
-  src="https://YOUR-USERNAME.github.io/qpcr-sim/"
+  src="https://YOUR-USERNAME.github.io/cloning-sim/"
   width="100%"
   height="900"
   style="border: none; border-radius: 12px;"
