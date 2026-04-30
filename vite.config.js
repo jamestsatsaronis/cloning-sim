@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 // e.g. if your repo is github.com/yourname/qpcr-sim, use '/qpcr-sim/'
 export default defineConfig({
   plugins: [react()],
-  base: '/CloningSimulation/',
+  base: '/cloning-sim/',
 })
