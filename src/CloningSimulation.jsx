@@ -276,12 +276,12 @@ const DECISIONS = [
         '("blunt") ends. EcoRI (GAATTC) and BamHI (GGATCC) both leave 5′ overhangs, but the ' +
         'overhangs are different: an EcoRI end can only ligate to another EcoRI end, not to a ' +
         'BamHI end. EcoRV (GATATC) leaves blunt ends. \n\nSuccessful ligation requires that the ' +
-        'vector and insert have ends that can base-pair (or at least be joined): identical ' +
-        'sticky ends on both molecules, or blunt ends on both. \n\nUsing two different sticky ' +
-        'ends on the same fragment forces directional cloning — the insert can only go in one ' +
-        'way. Using identical sticky ends on both ends, or using blunt ends, allows the insert ' +
-        'to ligate in either orientation. Blunt-end ligation is also markedly less efficient ' +
-        'than sticky-end ligation.'
+        'vector and insert have ends that can base-pair (or at least be joined). This can be  ' +
+        'achieved by including matching restriction sites between the vector and the insert. ' +
+        '\n\nUsing two different sticky ends on the same fragment forces directional cloning  ' +
+        '— the insert can only go in one way. Using identical sticky ends on both ends, or  ' +
+        'using blunt ends, allows the insert to ligate in either orientation. Blunt-end ' +
+        'ligation is also markedly less efficient than sticky-end ligation.'
     },
     options: [
       {
