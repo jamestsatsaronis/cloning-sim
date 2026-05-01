@@ -44,8 +44,8 @@ const FONT_MONO = "'JetBrains Mono', ui-monospace, monospace";
 const GOALS = {
   A: {
     id: 'A',
-    title: 'Recombinant Insulin',
-    subtitle: 'Express human insulin in E. coli',
+    title: 'Express human insulin in E. coli',
+    subtitle: 'Express recombinant insulin in bacteria',
     body:
       'Your aim is to produce recombinant human insulin in bacteria for downstream purification. ' +
       'You need the human INS coding sequence cloned into a vector that can drive its expression in E. coli.',
