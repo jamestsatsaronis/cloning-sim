@@ -2451,7 +2451,7 @@ function EndScreen({ choices, time, cost, onRestart }) {
         {success ? successMessages[choices.goal] : (
           <span>
             Your decisions did not produce a construct capable of meeting the project goal:{' '}
-            <em style={{ color: PALETTE.text }}>{goal.subtitle}</em>. Review the table below to see
+            <em style={{ color: PALETTE.text }}>{goal.title}</em>. Review the table below to see
             where each choice helped or hurt, and try again with a different strategy.
           </span>
         )}
