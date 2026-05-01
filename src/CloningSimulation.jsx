@@ -55,8 +55,8 @@ const GOALS = {
   },
   B: {
     id: 'B',
-    title: 'Bacterial Luciferase in Mammalian Cells',
-    subtitle: 'Express V. harveyi luxAB in human cells',
+    title: 'Express V. harveyi luxAB in human cells',
+    subtitle: 'Study Bacterial Luciferase in Mammalian Cells',
     body:
       'You want to express the bacterial luxAB luciferase operon in cultured mammalian cells. ' +
       'You need the bacterial coding sequence cloned into a vector that can drive expression in human cells.',
@@ -66,8 +66,8 @@ const GOALS = {
   },
   C: {
     id: 'C',
-    title: 'Liver-Specific GFP Reporter',
-    subtitle: 'Study the human albumin promoter',
+    title: 'Express GFP under the control of ALB promoter',
+    subtitle: 'Construct a Liver-Specific GFP Reporter',
     body:
       'You want to test whether the human albumin promoter region is sufficient to drive ' +
       'liver-specific gene expression. You need to clone the promoter upstream of GFP in a ' +
