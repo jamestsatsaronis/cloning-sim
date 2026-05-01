@@ -187,14 +187,14 @@ const DECISIONS = [
       },
       {
         value: 'same_site',
-        label: 'Add the same restriction site (EcoRI) to both primers',
+        label: 'Gene-specific primers with same restriction site added to both primers',
         detail: 'EcoRI tail on both forward and reverse primers.',
         time: 0,
         cost: 40
       },
       {
         value: 'different_sites',
-        label: 'Add different restriction sites to each primer',
+        label: 'Gene-specific primers with different restriction sites added to each primer',
         detail: 'EcoRI tail on the forward primer; BamHI tail on the reverse primer.',
         time: 0,
         cost: 40
