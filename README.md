@@ -1,55 +1,94 @@
-# Cloning Flow Simulation
+# Cloning Strategy Simulation
 
-An interactive educational simulation that guides students through the process of designing a cloning experiment.
+An interactive branching simulation for teaching molecular cloning. Students
+choose one of three project goals and then make six sequential decisions
+about how to plan and execute their cloning experiment. Failures only
+become visible at realistic checkpoints — the transformation plate and the
+validation readout — and a final debrief explains the consequences of each
+choice.
 
-## Quick Start (local development)
+Built to complement an existing biochemistry/molecular biology lecture
+series; designed as a 10–15 minute study tool, not an assignment.
 
-```bash
+## Project goals
+
+| Project | Insert | Vector | Host context |
+|---------|--------|--------|--------------|
+| A — Recombinant insulin | human INS | pET28a | E. coli expression |
+| B — Bacterial luciferase in mammalian cells | V. harveyi luxAB | pcDNA3.1 | mammalian expression |
+| C — Liver-specific GFP reporter | human ALB promoter | pEGFP-1 | reporter assay |
+
+Each goal makes a different decision the "correct" one at most steps,
+forcing students to reason from concepts rather than memorise a recipe.
+
+## Decisions
+
+1. **Source** — genomic DNA vs mRNA
+2. **Template** — direct PCR vs RT with oligo-dT vs RT with random hexamers
+3. **Primers** — gene-specific only, same site on both ends, or different sites
+4. **Vector** — pET28a, pcDNA3.1, pEGFP-1 or pUC19 (interactive plasmid maps)
+5. **Restriction strategy** — single sticky, double sticky (directional), or blunt
+6. **Validation** — colony PCR, restriction digest, sequencing, or skip
+
+A "Checkpoint · transformation plate" appears between steps 5 and 6, and a
+"Checkpoint · validation readout" appears after step 6.
+
+## Project structure
+
+```
+cloning-sim/
+├── index.html                      Vite entry HTML
+├── package.json                    Dependencies (React 18, Vite 5)
+├── vite.config.js                  base: './' for portable deployment
+└── src/
+    ├── main.jsx                    Two-line entry point
+    └── CloningSimulation.jsx       The whole simulation in a single file
+```
+
+`CloningSimulation.jsx` is laid out top-to-bottom as: palette/fonts →
+goal & decision data → result-determination engine → SVG visual components
+(petri dish, gel, plasmid map) → UI primitives (info modal, progress bar) →
+screen components → debrief generation → end screen → main orchestrator.
+
+## Local development
+
+```sh
 npm install
-npm run dev
+npm run dev      # local dev server with hot reload
+npm run build    # production bundle in dist/
+npm run preview  # serve the production bundle locally
 ```
 
-Then open http://localhost:5173 in your browser.
+## GitHub Pages deployment
 
-## Deploy to GitHub Pages
+The Vite config uses `base: './'` so the built site is portable. To deploy
+via GitHub Actions, create `.github/workflows/deploy.yml` with a standard
+"build and publish to gh-pages" workflow — the `dist/` directory is the
+artifact.
 
-### One-time setup
+If your repository name is something other than the site root, you may want
+to set `base: '/your-repo-name/'` in `vite.config.js`.
 
-1. **Create a new GitHub repository** (e.g. `cloning-sim`)
+## Adding or changing decisions
 
-2. **Edit `vite.config.js`** — change `your-repo-name` to your actual repo name:
-   ```js
-   base: '/cloning-sim/',
-   ```
+Each decision is a self-contained object in the `DECISIONS` array near the
+top of `CloningSimulation.jsx`. To add an option, append to the `options`
+array; to add a new decision step, add a new object and update the
+`nextStageAfterDecision` mapping plus the dispatch block in the main
+component.
 
-3. **Push the code:**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/qpcr-sim.git
-   git push -u origin main
-   ```
+The result-determination engine consists of pure functions
+(`computeInsertObtained`, `computeLigationSuccess`,
+`computeOrientationCorrect`, etc.) that take the choices object and return
+booleans. To change a learning outcome, update the relevant function — the
+end-screen debrief picks up changes automatically through the
+`DEBRIEF_FUNCTIONS` map.
 
-4. **Enable GitHub Pages:**
-   - Go to your repo → **Settings** → **Pages**
-   - Under **Source**, select **GitHub Actions**
-   - That's it — the included workflow will build and deploy automatically
+## Adding or changing plasmid maps
 
-5. Your site will be live at: `https://YOUR-USERNAME.github.io/cloning-sim/`
-
-### Updating
-
-Any push to `main` automatically rebuilds and redeploys. Just edit, commit, and push.
-
-## Embedding in another page
-
-```html
-<iframe
-  src="https://YOUR-USERNAME.github.io/cloning-sim/"
-  width="100%"
-  height="900"
-  style="border: none; border-radius: 12px;"
-></iframe>
-```
+Plasmid feature data lives in the `VECTOR_MAPS` object. Each feature has a
+position in degrees (0° = top, clockwise), a kind that drives its colour
+and arrowhead style, and an `info` string shown on hover. The same
+`PlasmidMap` component is reused on the end screen via
+`buildConstructFeatures`, which substitutes the chosen insert into the
+chosen vector's MCS.
